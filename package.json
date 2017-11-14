@@ -1,0 +1,13 @@
+{
+  "name": "hipcamp-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "vic6 <vicmatthews116@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "webpack": "^3.8.1"
+  }
+}
