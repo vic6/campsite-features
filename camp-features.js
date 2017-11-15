@@ -1,4 +1,4 @@
-var FEATURES = [
+export var features = [
   {
     title: "Toilet",
     presence: true,
