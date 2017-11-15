@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { features } from "../camp-features.js";
 
 class Features extends Component {
+  constructor(props) {
+    super();
+  }
   render() {
     console.log(features);
     return (
@@ -25,17 +28,31 @@ class Features extends Component {
 class Feature extends Component {
   constructor(props) {
     super(props);
-  }
-  handleFeatureClick(event) {
-    console.log(event.target);
+    console.log(props);
   }
   render() {
+    const title = this.props.title;
+    const presence = this.props.presence ? "We Got it" : "We ain't got it";
+    const subFeatures = this.props.subFeatures.length;
     return (
       <div>
-        <ul>
-          <li onClick={this.handleFeatureClick}>{this.props.title}</li>
-        </ul>
+        <li>{title}, {presence}, {subFeatures}</li>
+        <SubFeature sub={this.props.subFeatures} />
       </div>
+    );
+  }
+}
+
+class SubFeature extends Component {
+  constructor(props) {
+    super(props);
+    debugger;
+  }
+  render() {
+    const subFeature = this.props.sub.length > 0;
+    const names = this.props.sub.map(sub => <p>sub.title</p>);
+    return(
+      'hello'
     );
   }
 }
