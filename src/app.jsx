@@ -15,6 +15,7 @@ class Features extends Component {
         <ul>
           {features.map(feature => (
             <Feature
+              key={feature.title}
               title={feature.title}
               presence={feature.presence}
               subFeatures={feature.subfeatures}
@@ -29,54 +30,65 @@ class Features extends Component {
 class Feature extends Component {
   constructor(props) {
     super(props);
+    this.state = { displayFeatures: true };
     this.showFeatures = this.showFeatures.bind(this);
+    this.toggleFeatures = this.toggleFeatures.bind(this);
   }
+  toggleFeatures() {
+    // if (this.props.subFeatures.length > 0) {
+    //   this.setState({
+    //     displayFeatures: !this.state.displayFeatures
+    //   });
+    // }
+    console.log(this.showFeatures());
+  }
+
   showFeatures() {
     let extra = [];
+    var exp = "";
     if (this.props.subFeatures.length > 0) {
-      //debugger;
+      exp = true;
       for (let i = 0; i < this.props.subFeatures.length; i++) {
         extra.push(<li>{this.props.subFeatures[i]}</li>);
       }
     } else {
-      console.log("No extra features");
+      exp = false;
     }
-    return extra;
-    //console.log(extra);
+    return exp;
   }
   render() {
     const title = this.props.title;
     const presence = this.props.presence ? ": Yes" : ": No";
     const subFeatures = this.props.subFeatures;
     const extra = [];
+    const exp = this.showFeatures();
     if (this.props.subFeatures.length > 0) {
       //debugger;
       for (let i = 0; i < this.props.subFeatures.length; i++) {
-        extra.push(this.props.subFeatures[i].title);
+        extra.push(this.props.subFeatures[i]);
       }
     } else {
       console.log("No extra features");
     }
     return (
-      <div>
-        <li onClick={this.showFeatures}>
+        <li onClick={this.toggleFeatures}>
           {title}
           {presence}
-          <ul>{extra.map(item => <li>{item}</li>)}</ul>
+          {extra.map(feature => (
+            <ul
+              key={feature.title}
+              //style={{ display: this.state.displayFeatures ? "none" : "block" }}
+            >
+              <Feature
+                title={feature.title}
+                presence={feature.presence}
+                subFeatures={feature.subfeatures}
+                showFeatures={this.showFeatures}
+              />
+            </ul>
+          ))}
         </li>
-      </div>
     );
-  }
-}
-
-class SubFeature extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const subFeature = this.props.sub.length > 0;
-    const names = this.props.sub.map(sub => <p>sub.title</p>);
-    return <li>This is a Subfeature</li>;
   }
 }
 
