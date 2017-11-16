@@ -11,6 +11,7 @@ class Features extends Component {
     return (
       <div>
         <h1>Campground Features</h1>
+        <h2>List of features</h2>
         <ul>
           {features.map(feature => (
             <Feature
@@ -28,16 +29,41 @@ class Features extends Component {
 class Feature extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    this.showFeatures = this.showFeatures.bind(this);
+  }
+  showFeatures() {
+    let extra = [];
+    if (this.props.subFeatures.length > 0) {
+      //debugger;
+      for (let i = 0; i < this.props.subFeatures.length; i++) {
+        extra.push(<li>{this.props.subFeatures[i]}</li>);
+      }
+    } else {
+      console.log("No extra features");
+    }
+    return extra;
+    //console.log(extra);
   }
   render() {
     const title = this.props.title;
-    const presence = this.props.presence ? "We Got it" : "We ain't got it";
-    const subFeatures = this.props.subFeatures.length;
+    const presence = this.props.presence ? ": Yes" : ": No";
+    const subFeatures = this.props.subFeatures;
+    const extra = [];
+    if (this.props.subFeatures.length > 0) {
+      //debugger;
+      for (let i = 0; i < this.props.subFeatures.length; i++) {
+        extra.push(this.props.subFeatures[i].title);
+      }
+    } else {
+      console.log("No extra features");
+    }
     return (
       <div>
-        <li>{title}, {presence}, {subFeatures}</li>
-        <SubFeature sub={this.props.subFeatures} />
+        <li onClick={this.showFeatures}>
+          {title}
+          {presence}
+          <ul>{extra.map(item => <li>{item}</li>)}</ul>
+        </li>
       </div>
     );
   }
@@ -46,14 +72,11 @@ class Feature extends Component {
 class SubFeature extends Component {
   constructor(props) {
     super(props);
-    debugger;
   }
   render() {
     const subFeature = this.props.sub.length > 0;
     const names = this.props.sub.map(sub => <p>sub.title</p>);
-    return(
-      'hello'
-    );
+    return <li>This is a Subfeature</li>;
   }
 }
 
