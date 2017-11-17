@@ -5,7 +5,13 @@ import { features } from "../camp-features.js";
 class Features extends Component {
   constructor(props) {
     super();
+    //this.toggleFeatures = this.toggleFeatures.bind(this);
   }
+
+  toggleFeatures() {
+    //console.log(this.props.subFeatures);
+  }
+
   render() {
     console.log(features);
     return (
@@ -30,29 +36,40 @@ class Features extends Component {
 class Feature extends Component {
   constructor(props) {
     super(props);
-    this.state = { displayFeatures: true };
+    this.state = { displayFeatures: false };
     this.showFeatures = this.showFeatures.bind(this);
-    this.toggleFeatures = this.toggleFeatures.bind(this);
   }
-  toggleFeatures() {
-    // if (this.props.subFeatures.length > 0) {
-    //   this.setState({
-    //     displayFeatures: !this.state.displayFeatures
+  toggleFeatures(event) {
+    // event.stopPropagation();
+    // console.log(this.state.displayFeatures);
+    // if (event.target.className === "Expandable" && !this.state.displayFeatures) {
+    //   return this.setState({
+    //     displayFeatures: true
     //   });
+    // } else if (event.target.className === "Expandable" && this.props.subFeatures.length > 0 && !this.state.display) {
+    //   console.log('hellkdsfkldsjfklsfklsf');
+    //   return this.setState(prevState => ({
+    //     displayFeatures: !prevState.displayFeatures
+    //   }));
     // }
-    console.log(this.showFeatures());
+    if (event.target.className === "Expandable") {
+      event.stopPropagation();
+      return this.setState(prevState => ({
+        displayFeatures: !prevState.displayFeatures
+      }));
+    }
   }
 
   showFeatures() {
     let extra = [];
     var exp = "";
     if (this.props.subFeatures.length > 0) {
-      exp = true;
+      exp = "Expandable";
       for (let i = 0; i < this.props.subFeatures.length; i++) {
         extra.push(<li>{this.props.subFeatures[i]}</li>);
       }
     } else {
-      exp = false;
+      exp = "Not expandable";
     }
     return exp;
   }
@@ -63,31 +80,35 @@ class Feature extends Component {
     const extra = [];
     const exp = this.showFeatures();
     if (this.props.subFeatures.length > 0) {
-      //debugger;
       for (let i = 0; i < this.props.subFeatures.length; i++) {
         extra.push(this.props.subFeatures[i]);
       }
-    } else {
-      console.log("No extra features");
     }
+
     return (
-        <li onClick={this.toggleFeatures}>
-          {title}
-          {presence}
-          {extra.map(feature => (
-            <ul
-              key={feature.title}
-              //style={{ display: this.state.displayFeatures ? "none" : "block" }}
-            >
-              <Feature
-                title={feature.title}
-                presence={feature.presence}
-                subFeatures={feature.subfeatures}
-                showFeatures={this.showFeatures}
-              />
-            </ul>
-          ))}
-        </li>
+      <li className={exp} onClick={e => this.toggleFeatures(e)}>
+        {title}
+        {presence}: {exp}
+        {extra.map(feature => (
+          <ul
+            key={feature.title}
+            //className={exp}
+            className={event.target.className}
+            style={{
+              display: this.state.displayFeatures ? "block" : "none"
+            }}
+          >
+            <Feature
+              title={feature.title}
+              className="MajorDog"
+              presence={feature.presence}
+              subFeatures={feature.subfeatures}
+              showFeatures={this.showFeatures}
+              toggleFeatures={this.toggleFeatures}
+            />
+          </ul>
+        ))}
+      </li>
     );
   }
 }
