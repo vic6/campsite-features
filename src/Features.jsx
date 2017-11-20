@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Feature from "./Feature.jsx";
+import Header from "./Header.jsx";
 import { features } from "../camp-features.js";
 
 class Features extends Component {
@@ -12,8 +13,7 @@ class Features extends Component {
     console.log(features);
     return (
       <div>
-        <h1>Campground Blah</h1>
-        <h2>List of features</h2>
+        <Header description={'Blah'}/>
         <ul>
           {features.map(feature => (
             <Feature
