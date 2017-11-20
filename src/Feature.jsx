@@ -8,7 +8,7 @@ class Feature extends Component {
     this.showFeatures = this.showFeatures.bind(this);
   }
   toggleFeatures(event) {
-    if (event.target.className === "Expandable") {
+    if (event.target.className === "expandable") {
       event.stopPropagation();
       return this.setState(prevState => ({
         displayFeatures: !prevState.displayFeatures
@@ -19,12 +19,12 @@ class Feature extends Component {
     let extra = [];
     var exp = "";
     if (this.props.subFeatures.length > 0) {
-      exp = "Expandable";
+      exp = "expandable";
       for (let i = 0; i < this.props.subFeatures.length; i++) {
         extra.push(<li>{this.props.subFeatures[i]}</li>);
       }
     } else {
-      exp = "Not expandable";
+      exp = "not-expandable";
     }
     return exp;
   }
