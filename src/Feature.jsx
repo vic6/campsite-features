@@ -8,18 +8,6 @@ class Feature extends Component {
     this.showFeatures = this.showFeatures.bind(this);
   }
   toggleFeatures(event) {
-    // event.stopPropagation();
-    // console.log(this.state.displayFeatures);
-    // if (event.target.className === "Expandable" && !this.state.displayFeatures) {
-    //   return this.setState({
-    //     displayFeatures: true
-    //   });
-    // } else if (event.target.className === "Expandable" && this.props.subFeatures.length > 0 && !this.state.display) {
-    //   console.log('hellkdsfkldsjfklsfklsf');
-    //   return this.setState(prevState => ({
-    //     displayFeatures: !prevState.displayFeatures
-    //   }));
-    // }
     if (event.target.className === "Expandable") {
       event.stopPropagation();
       return this.setState(prevState => ({
