@@ -1,6 +1,6 @@
 # CampersQuest
 
-Easily find out what features your next campsite will be have!
+Easily find out what features your next campsite will have!
 
 ### Installing
 
