@@ -16,13 +16,9 @@ class Feature extends Component {
     }
   }
   showFeatures() {
-    let extra = [];
     var exp = "";
     if (this.props.subFeatures.length > 0) {
       exp = "expandable";
-      for (let i = 0; i < this.props.subFeatures.length; i++) {
-        extra.push(<li>{this.props.subFeatures[i]}</li>);
-      }
     } else {
       exp = "not-expandable";
     }
@@ -32,24 +28,24 @@ class Feature extends Component {
     const title = this.props.title;
     const presence = this.props.presence ? ": Yes" : ": No";
     const subFeatures = this.props.subFeatures;
-    const extra = [];
+    const subFeatureList = [];
     const icon = this.props.icon;
     const exp = this.showFeatures();
+
     if (this.props.subFeatures.length > 0) {
       for (let i = 0; i < this.props.subFeatures.length; i++) {
-        extra.push(this.props.subFeatures[i]);
+        subFeatureList.push(this.props.subFeatures[i]);
       }
     }
-    console.log(icon);
+
     return (
       <li className={exp} onClick={e => this.toggleFeatures(e)}>
-        <i className={icon} aria-hidden="true"></i>
+        <i className={icon} aria-hidden="true" />
         {title}
         {presence}
-        {extra.map(feature => (
+        {subFeatureList.map(feature => (
           <ul
             key={feature.title}
-            //className={exp}
             className={event.target.className}
             style={{
               display: this.state.displayFeatures ? "block" : "none"
@@ -59,8 +55,6 @@ class Feature extends Component {
               title={feature.title}
               presence={feature.presence}
               subFeatures={feature.subfeatures}
-              //showFeatures={this.showFeatures}
-              //toggleFeatures={this.toggleFeatures}
             />
           </ul>
         ))}
