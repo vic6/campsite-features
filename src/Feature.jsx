@@ -5,7 +5,7 @@ class Feature extends Component {
   constructor(props) {
     super(props);
     this.state = { displayFeatures: false };
-    this.showFeatures = this.showFeatures.bind(this);
+    this.addExpClass = this.addExpClass.bind(this);
   }
   toggleFeatures(event) {
     if (event.target.className === "expandable") {
@@ -15,13 +15,9 @@ class Feature extends Component {
       }));
     }
   }
-  showFeatures() {
-    var exp = "";
-    if (this.props.subFeatures.length > 0) {
-      exp = "expandable";
-    } else {
-      exp = "not-expandable";
-    }
+  addExpClass() {
+    var exp;
+    this.props.subFeatures.length > 0 ? exp = "expandable" : exp = "not-expandable";
     return exp;
   }
   render() {
@@ -30,7 +26,7 @@ class Feature extends Component {
     const subFeatures = this.props.subFeatures;
     const subFeatureList = [];
     const icon = this.props.icon;
-    const exp = this.showFeatures();
+    const exp = this.addExpClass();
 
     if (this.props.subFeatures.length > 0) {
       for (let i = 0; i < this.props.subFeatures.length; i++) {

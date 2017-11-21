@@ -8,12 +8,11 @@ class Features extends Component {
   constructor(props) {
     super();
   }
-
   render() {
     console.log(features);
     return (
       <div>
-        <Header description={'List of Features'}/>
+        <Header title='Forrest Hills Campsite' />
         <ul>
           {features.map(feature => (
             <Feature

@@ -8,7 +8,7 @@ const Header = (props) => (
 );
 
 Header.defaultProps = {
-  title: 'Amazing Campground',
+  title: 'Selected Campsite',
   description: 'Feature List'
 };
 
