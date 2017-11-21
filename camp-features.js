@@ -2,16 +2,19 @@ export var features = [
   {
     title: "Toilet",
     presence: true,
+    icon: "fa fa-male fa-female",
     subfeatures: []
   },
   {
     title: "Pets allowed",
     presence: true,
+    icon: "fa fa-paw",
     subfeatures: []
   },
   {
     title: "Shower",
     presence: false,
+    icon: "fa fa-shower",
     subfeatures: [
       {
         title: "Outdoor shower",
@@ -23,6 +26,7 @@ export var features = [
   {
     title: "Trash",
     presence: true,
+    icon: "fa fa-trash-o",
     subfeatures: [
       {
         title: "Recycling bin",

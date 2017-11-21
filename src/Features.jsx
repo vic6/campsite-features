@@ -13,7 +13,7 @@ class Features extends Component {
     console.log(features);
     return (
       <div>
-        <Header description={'Blah'}/>
+        <Header description={'List of Features'}/>
         <ul>
           {features.map(feature => (
             <Feature
@@ -21,6 +21,7 @@ class Features extends Component {
               title={feature.title}
               presence={feature.presence}
               subFeatures={feature.subfeatures}
+              icon={feature.icon}
             />
           ))}
         </ul>

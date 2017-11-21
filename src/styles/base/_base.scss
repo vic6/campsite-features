@@ -4,19 +4,62 @@ html {
   font-size: 62.5%;
 }
 
+h1 {
+  text-align: center;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
+  color: white;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+  background-image: url("https://images.unsplash.com/photo-1484960055659-a39d25adcb3c?auto=format&fit=crop&w=2850&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
+  background-size: 110%, 100%;
 }
 
 ul {
-  color: blue;
+  list-style-type: none;
+
 }
 
 li {
-  color: red;
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid white;
+  width: 75%;
 }
 
-.expandable {
-  color: green;
+
+.expandable li:last-child {
+  border: none;
+}
+
+.expandable{
+  text-decoration: none;
+  //color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+}
+
+.expandable:hover {
+    cursor: pointer;
+    font-size: 25px;
+    //background: #f6f6f6;
+}
+
+.not-expandable:hover {
+  cursor: auto;
+}
+
+.fa-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

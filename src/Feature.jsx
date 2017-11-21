@@ -33,17 +33,19 @@ class Feature extends Component {
     const presence = this.props.presence ? ": Yes" : ": No";
     const subFeatures = this.props.subFeatures;
     const extra = [];
+    const icon = this.props.icon;
     const exp = this.showFeatures();
     if (this.props.subFeatures.length > 0) {
       for (let i = 0; i < this.props.subFeatures.length; i++) {
         extra.push(this.props.subFeatures[i]);
       }
     }
-
+    console.log(icon);
     return (
       <li className={exp} onClick={e => this.toggleFeatures(e)}>
+        <i className={icon} aria-hidden="true"></i>
         {title}
-        {presence}: {exp}
+        {presence}
         {extra.map(feature => (
           <ul
             key={feature.title}
