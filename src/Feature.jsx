@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 class Feature extends Component {
   constructor(props) {
